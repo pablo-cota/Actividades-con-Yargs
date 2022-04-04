@@ -57,7 +57,7 @@ yargs.command({
 }
 )
 
-//Comando para llear una sola nota, readOneNote
+//Comando para leer una sola nota, readOneNote
 yargs.command({
     command: "readOneNote",
     describe: "Read one note",
@@ -71,6 +71,33 @@ yargs.command({
     handler(argv){
         notes.readOneNote(argv.title)
     }
-})
+}
+)
+
+yargs.command({
+    command: "modifyNote",
+    describe: "Modify the selected note",
+    builder: {
+        title:{
+            describe: "Note title",
+            demandOption: true,
+            type : 'string'
+        },
+        newtitle:{
+            describe: "New title",
+            demandOption:true,
+            type:'string'
+        },
+        newbody:{
+            describe: "New body",
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler(argv){
+        notes.modifyNote(argv.title, argv.newtitle, argv.newbody)
+    }
+}
+)
 
 yargs.parse()

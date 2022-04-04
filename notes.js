@@ -1,4 +1,5 @@
 const fs = require('fs')
+
 const addNote = function(title,body){
     console.log("El título de la nota", title)
     console.log("El cuerpo de la nota",body)
@@ -71,9 +72,17 @@ const readOneNote = function(title){
     }
 }
 
+//Modificar notas
+const modifyNote = function(title, newtitle, newbody){
+    const notes = readOneNote(title)
+    const note = removeNote(title)
+    const newnote = addNote(newtitle, newbody) 
+}
+
 module.exports = {
     addNote:addNote,
     listNotes:listNotes,
     removeNote:removeNote,
-    readOneNote:readOneNote
+    readOneNote:readOneNote,
+    modifyNote:modifyNote
 }
